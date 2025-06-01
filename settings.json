@@ -13,6 +13,5 @@
     "ai": false,
     "base_url": "https://api.groq.com/openai/v1/chat/completions",
     "model": "llama-3.3-70b-versatile",
-    "api_key":"",
-    "locale_lang": "zh-tw"
+    "api_key":""
 }
