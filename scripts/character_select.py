@@ -28,11 +28,14 @@ try:
 
     if not launch.is_installed("colorama"):
             launch.run_pip("install colorama")
+    if not launch.is_installed("zhconv"):
+            launch.run_pip("install zhconv")
 except:
     pass
 
 try:
     from colorama import just_fix_windows_console, Fore, Style
+    from zhconv import convert as zh_convert
     just_fix_windows_console()
 except:
     pass
@@ -118,7 +121,9 @@ class CharacterSelect(scripts.Script):
         #    self.hm_config_1_img.append(item)
         
         self.localizations = "zh_TW.json"
-        self.localizations_component = self.get_config2(self.localizations)
+        self.localizations_component = dict()
+        for key,value in self.get_config2(self.localizations).items():
+            self.localizations_component[zh_convert(key, self.settings["locale_lang"])] = value
         self.relocalizations_component = {value: key for key, value in self.localizations_component.items()}
 
         self.hm1prompt = ""
